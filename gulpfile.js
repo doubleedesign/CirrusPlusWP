@@ -1,22 +1,20 @@
-const gulp = require('gulp');
-const plumber = require('gulp-plumber');
-const sass = require('gulp-sass');
-const sassGlob = require('gulp-sass-glob');
-const rename = require('gulp-rename');
-const autoprefixer = require('gulp-autoprefixer');
-const minifyCSS       = require('gulp-minify-css');
-const uglify          = require('gulp-uglify');
-const concat          = require('gulp-concat');
-const gutil           = require('gulp-util');
-const browsersync     = require('browser-sync').create();
-const sourcemaps      = require('gulp-sourcemaps');
-const wpPot 			= require('gulp-wp-pot');
-const postCSS         = require('gulp-postcss');
-const objectFitImages = require('postcss-object-fit-images');
+const gulp 				= require('gulp');
+const plumber 			= require('gulp-plumber');
+const sass 				= require('gulp-sass');
+const sassGlob 			= require('gulp-sass-glob');
+const rename 			= require('gulp-rename');
+const autoprefixer 		= require('gulp-autoprefixer');
+const minifyCSS       	= require('gulp-minify-css');
+const uglify          	= require('gulp-uglify');
+const concat          	= require('gulp-concat');
+const browsersync     	= require('browser-sync').create();
+const sourcemaps      	= require('gulp-sourcemaps');
+const postCSS         	= require('gulp-postcss');
+const objectFitImages 	= require('postcss-object-fit-images');
 
 
 gulp.task('styles',  done =>  {
-	gulp.src('sass/base.scss')
+	gulp.src('scss/style.scss')
 		.pipe(sassGlob())
 		.pipe(sourcemaps.init())
 		.pipe(plumber(function (error) {
@@ -25,24 +23,27 @@ gulp.task('styles',  done =>  {
 		}))
 		.pipe(sass())
 		.pipe(postCSS([objectFitImages]))
-		.pipe(autoprefixer({browsers: ['defaults', 'iOS >= 8']}))
+		.pipe(autoprefixer({
+			browsers: ['defaults', 'iOS >= 8'],
+			grid: false
+		}))
 		.pipe(minifyCSS())
-		.pipe(rename('main.min.css'))
+		.pipe(rename('style.css'))
 		.pipe(sourcemaps.write('/'))
-		.pipe(gulp.dest('dist/css'))
+		.pipe(gulp.dest('./'))
 		.pipe(browsersync.stream())
 	done();
 });
 
 gulp.task('scripts', done => {
 	gulp.src('js/[^_]*.js')
-		.pipe(concat('main.js'))
+		.pipe(concat('theme.js'))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(uglify().on('error', function(error){
-			gutil.log(gutil.colors.red('[Error]'), error.toString());
+			console.log(error);
 			this.emit('end');
 		}))
-		.pipe(gulp.dest('dist/js'))
+		.pipe(gulp.dest('js/dist'))
 		.pipe(browsersync.stream())
 	done();
 });
@@ -52,33 +53,18 @@ gulp.task('vendor', done => {
 		.pipe(concat('vendor.js'))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(uglify().on('error', function(error){
-			gutil.log(gutil.colors.red('[Error]'), error.toString());
+			console.log(error);
 			this.emit('end');
 		}))
-		.pipe(gulp.dest('dist/js'))
+		.pipe(gulp.dest('js/dist'))
 		.pipe(browsersync.stream())
-	done();
-});
-
-gulp.task('translations', done => {
-	let domain = 'legpress';
-	gulp.src('./**/*.php')
-		.pipe(wpPot({
-			domain: domain,
-			package: 'LegPress',
-			headers: {
-				NOTES: 'CMS = content management system',
-			},
-		}))
-		.pipe(gulp.dest('languages/'+domain+'.pot'))
-		.pipe(browsersync.stream());
 	done();
 });
 
 gulp.task('build', function() {
 	browsersync.init({
 		proxy: {
-			target: 'https://legpress.local'
+			target: 'https://cirrusplus.local'
 		},
 		snippetOptions: {
 			whitelist: ['/wp-admin/admin-ajax.php'],
@@ -89,9 +75,7 @@ gulp.task('build', function() {
 	gulp.watch('sass/**/*.scss', gulp.series('styles'));
 	gulp.watch('js/[^_]*.js', gulp.series('scripts'));
 	gulp.watch('js/vendor/[^_]*.js', gulp.series('vendor'));
-	gulp.watch('./**/*.php', gulp.series('translations'));
 	browsersync.reload();
-
 });
 
 gulp.task('default', gulp.parallel(gulp.series('build')));
