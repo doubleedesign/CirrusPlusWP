@@ -1,0 +1,21 @@
+/*!
+Theme Name:     Cirrus Plus
+Description:    A WordPress theme starter kit using Cirrus.css plus other bits I add and/or create.
+Author:         Leesa Ward
+Author URI:     https://www.doubleedesign.com.au
+Theme URI:      https://github.com/doubleedesign/CirrusPlusWP
+Version:        1.0
+*/
+
+/**
+ * Notes:
+ * I have removed @import statements from the Cirrus SCSS files and imported everything here instead.
+ * I have also moved its theme.scss out into the cirrus folder root so we can
+ * import that as the defaults, and then import our own theme.scss to override it as needed.
+ */
+
+@import 'cirrus/helpers/*';
+@import 'cirrus/theme';
+@import 'theme';
+@import 'cirrus/core/*';
+@import 'cirrus/ext/*';
