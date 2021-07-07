@@ -4,7 +4,7 @@ $intro_copy = get_sub_field('intro_copy');
 $panels = get_sub_field('panels');
 if($panels) { ?>
 <section class="module module__accordion">
-	<div class="container">
+	<div class="content row">
 		<div class="row justify-content-center">
 			<div class="col-12 col-lg-10">
 				<div class="module__accordion__intro typography">
