@@ -44,7 +44,7 @@
 					'theme_location' 	=> 'header-menu',
 					'menu_id' 			=> 'header-menu',
 					'menu_class' 		=> 'site-header__menu header-nav col-8',
-					'content row'			=> false,
+					'container'			=> false,
 					'fallback_cb'		=> false,
 					'depth'				=> 2,
 				)); ?>
