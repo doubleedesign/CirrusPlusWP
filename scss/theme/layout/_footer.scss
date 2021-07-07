@@ -1,0 +1,32 @@
+.site-footer {
+	padding: 0;
+
+	&__main {
+		background: map-get($control-themes, 'dark');
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
+	&__fineprint {
+		background: darken(map-get($control-themes, 'dark'), 10%);
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		color: white;
+
+		small {
+			text-align: center;
+
+			&:first-of-type {
+				@include screen-above(md) {
+					text-align: left;
+				}
+			}
+
+			&:last-of-type {
+				@include screen-above(md) {
+					text-align: right;
+				}
+			}
+		}
+	}
+}

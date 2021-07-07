@@ -19,3 +19,7 @@ Cirrus version:	Cirrus-0.6.2-patch-1
 @import 'theme'; // overrides and custom variables
 @import 'cirrus/core/*';
 @import 'cirrus/ext/*';
+@import 'theme/*';
+@import 'theme/components/*';
+@import 'theme/layout/*';
+@import 'theme/modules/*';

@@ -1,0 +1,13 @@
+// Override Cirrus variables and add your own here.
+// See cirrus/theme.scss, cirrus/helpers/_size.scss
+
+$control-themes: (
+	'primary': $cirrus-primary,
+	'gray': $cirrus-gray,
+	'dark': $cirrus-dark,
+	'link': $cirrus-link,
+	'info': $cirrus-info,
+	'success': $cirrus-success,
+	'warning': $cirrus-warning,
+	'danger': $cirrus-danger,
+);

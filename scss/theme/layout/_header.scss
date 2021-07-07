@@ -1,0 +1,23 @@
+.site-header {
+
+	&__menu {
+		justify-content: flex-end;
+
+		.nav-item {
+			padding: 0;
+		}
+
+		.dropdown-menu {
+			display: block;
+			left: 0;
+
+			.nav-item {
+				display: block;
+
+				a {
+					display: block;
+				}
+			}
+		}
+	}
+}
