@@ -241,7 +241,7 @@ function doublee_reroute_to_404($template) {
 		return $template;
 	}
 }
-add_filter('template_include', 'reroute_to_404');
+add_filter('template_include', 'doublee_reroute_to_404');
 
 
 /**
@@ -253,4 +253,4 @@ function doublee_redirect_to_url() {
 		wp_redirect($redirect['url']);
 	}
 }
-add_action('template_redirect', 'redirect_to_url');
+add_action('template_redirect', 'doublee_redirect_to_url');

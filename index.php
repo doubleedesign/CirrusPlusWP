@@ -4,21 +4,20 @@
 	<?php if(have_posts()): ?>
 		<div class="posts">
 			<?php while(have_posts()): the_post(); ?>
-				<div class="post">
-					<?php include locate_template('partials/post.php'); ?>
-				</div>
+				<?php get_template_part('partials/post-tile'); ?>
 			<?php endwhile; ?>
 			<div class="pagination">
 				<?php
-					print paginate_links(array(
-						'current'   => max( 1, get_query_var( 'paged' ) ),
-						'total'     => $wp_query->max_num_pages,
-						'prev_text' => doublee_fa('fa fa-angle-left', 'Previous'),
-						'next_text' => doublee_fa('fa fa-angle-right', 'Next'),
-						'type'      => 'list',
-						'end_size'  => 3,
-						'mid_size'  => 3
-					));
+				global $wp_query;
+				print paginate_links(array(
+					'current'   => max( 1, get_query_var('paged')),
+					'total'     => $wp_query->max_num_pages,
+					'prev_text' => 'Prev',
+					'next_text' => 'Next',
+					'type'      => 'list',
+					'end_size'  => 3,
+					'mid_size'  => 3
+				));
 				?>
 			</div>
 		</div>

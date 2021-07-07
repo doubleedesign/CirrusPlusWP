@@ -4,6 +4,9 @@
  */
 function doublee_enqueue_frontend() {
 
+	// Our styles
+	wp_enqueue_style('theme-style', get_template_directory_uri().'/style.css', '', time());
+
 	// Third-party scripts
 	if(defined('GMAPS_KEY') && GMAPS_KEY) {
 		wp_enqueue_script('gmaps_api', 'https://maps.googleapis.com/maps/api/js?key='.GMAPS_KEY, '', '', true);
