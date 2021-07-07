@@ -72,7 +72,7 @@ gulp.task('build', function() {
 		}
 	});
 
-	gulp.watch('sass/**/*.scss', gulp.series('styles'));
+	gulp.watch('scss/**/*.scss', gulp.series('styles'));
 	gulp.watch('js/[^_]*.js', gulp.series('scripts'));
 	gulp.watch('js/vendor/[^_]*.js', gulp.series('vendor'));
 	browsersync.reload();
