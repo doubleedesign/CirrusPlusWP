@@ -5,7 +5,7 @@
 	if(have_posts()) {
 		while(have_posts()) {
 			the_post();
-			get_template_part('partials/post-tile');
+			get_template_part('partials/card');
 		}
 		get_template_part('partials/pagination');
 	}
