@@ -14,6 +14,7 @@ Cirrus version:	Cirrus-0.6.2-patch-1
  * I have also moved its theme.scss out into the cirrus folder root so we can
  * import that as the defaults, and then import our own theme.scss to override it as needed.
  */
+@import 'utilities'; // custom functions and mixins
 @import 'cirrus/helpers/*';
 @import 'cirrus/theme'; // default variables
 @import 'theme'; // overrides and custom variables

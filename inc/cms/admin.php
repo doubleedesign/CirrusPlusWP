@@ -1,11 +1,5 @@
 <?php
 /**
- * Remove the margin-top on <html> that the admin bar applies
- */
-add_theme_support('admin-bar', array('callback' => '__return_false'));
-
-
-/**
  * Customise login screen logo
  */
 function doublee_login_logo() {

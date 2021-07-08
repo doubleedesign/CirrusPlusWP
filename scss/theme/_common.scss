@@ -1,8 +1,35 @@
 .content {
 	margin-bottom: 0;
+
+	@include screen-above(lg) {
+		width: 100%;
+		max-width: rem-calc(1200);
+	}
+
+	@include screen-above(xxl) {
+		max-width: rem-calc(1440);
+	}
 }
 
 .row {
 	width: 100%;
 	flex-basis: 100%;
+	padding: 0 0.5rem;
+
+	@include screen-above(md) {
+		padding: 0 1rem;
+	}
+
+	[class^='col-'],
+	[class*=' col-'] {
+		padding: 0 1rem;
+
+		@include screen-above(md) {
+			padding: 0 0.5rem;
+		}
+
+		@include screen-above(xl) {
+			padding: 0 1rem;
+		}
+	}
 }

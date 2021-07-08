@@ -1,0 +1,11 @@
+// Mixin to easily apply the same styles to hover, focus, and active states.
+@mixin hover-focus-active {
+	&:hover, &:focus, &:active {
+		@content;
+	}
+}
+
+// Function to convert pixel values to rems.
+@function rem-calc($pixels) {
+	@return #{$pixels / 16}rem;
+}
