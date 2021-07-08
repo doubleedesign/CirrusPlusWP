@@ -1,5 +1,6 @@
 body {
 	overflow-x: hidden;
+	line-height: 1.4;
 }
 
 .content {
@@ -24,6 +25,17 @@ body {
 		padding: 0 1rem;
 	}
 
+	.row {
+		padding: 0;
+		margin-left: -0.5rem;
+		margin-right: -0.5rem;
+
+		@include screen-above(md) {
+			margin-left: -1rem;
+			margin-right: -1rem;
+		}
+	}
+
 	[class^='col-'],
 	[class*=' col-'] {
 		padding: 0 1rem;
@@ -34,6 +46,23 @@ body {
 
 		@include screen-above(xl) {
 			padding: 0 1rem;
+		}
+	}
+
+	@each $breakpoint, $value in $breakpoints {
+
+		.col-#{$breakpoint}-shrink {
+			@include screen-above($breakpoint) {
+				flex-shrink: 0;
+				width: auto;
+			}
+		}
+
+		.col-#{$breakpoint}-grow {
+			@include screen-above($breakpoint) {
+				flex-grow: 1;
+				width: auto;
+			}
 		}
 	}
 }
