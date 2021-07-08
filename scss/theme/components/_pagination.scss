@@ -1,39 +1,20 @@
 .pagination {
 	margin: 1rem auto;
 
-	.page-numbers {
-		padding: 0;
+	ul {
 		margin: 0;
+		padding: 0;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 
 		li {
 			list-style: none;
-			display: block;
-			margin: 0.25rem;
-
-			.current, a {
-				display: block;
-				border: 1px solid map-get($control-themes, 'dark');
-				color: map-get($control-themes, 'dark');
-				padding: 0.5rem 0.75rem;
-				line-height: 1;
-			}
+			margin: 0;
+			padding: 0.25rem;
 
 			.current {
-				background: map-get($control-themes, 'dark');
-				border-color: map-get($control-themes, 'dark');
-				color: white;
-			}
-
-			a {
-
-				@include hover-focus-active {
-					background: map-get($control-themes, 'primary');
-					border-color: map-get($control-themes, 'primary');
-					color: white;
-				}
+				pointer-events: none;
 			}
 		}
 	}
