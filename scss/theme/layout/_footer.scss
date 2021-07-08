@@ -5,26 +5,190 @@
 		background: map-get($control-themes, 'dark');
 		padding-top: 2rem;
 		padding-bottom: 2rem;
+
+		.row {
+
+			@include screen-above(lg) {
+				flex-wrap: nowrap;
+			}
+		}
+
+		.footer-nav {
+			display: flex;
+			padding: 0;
+			margin-top: 0;
+
+			@include screen-above(lg) {
+				padding-right: 2rem;
+			}
+
+			.menu-item {
+				display: block;
+				margin: 0;
+				font-weight: map-get($font-weights, 'normal');
+				color: rgba(white, 0.75);
+
+				@include screen-above(xs) {
+					text-align: left;
+				}
+
+				&--top-level {
+					font-size: $font-size-m;
+					font-weight: map-get($font-weights, 'bold');
+					color: white;
+				}
+
+				a {
+					color: inherit;
+					padding-left: 0;
+					padding-right: 0;
+					text-decoration: underline;
+					text-decoration-color: transparent;
+					font-size: 1em;
+					font-weight: inherit;
+
+					@include hover-focus-active {
+						background: transparent;
+						color: white;
+						text-decoration-color: currentColor;
+					}
+				}
+
+				@include hover-focus-active {
+					background: transparent;
+
+					a {
+						background: transparent;
+					}
+				}
+			}
+
+			.sub-menu {
+				padding: 0;
+				border: 0;
+				margin: 0 0 1rem;
+
+				.menu-item {
+					font-size: $font-size-s;
+
+					a {
+						padding-left: 0;
+					}
+				}
+			}
+		}
+
+		.footer-contact {
+
+			@include screen-above(lg) {
+				text-align: left;
+				margin-left: auto;
+				border-top: 0;
+				border-left: 1px solid rgba(white, 0.1);
+				padding-top: 0;
+				padding-left: 2rem;
+			}
+
+			h2 {
+				font-size: $font-size-m;
+				font-family: unset;
+				font-weight: map-get($font-weights, 'bold');
+				color: white;
+				margin: 0;
+				line-height: unset;
+				border-top: 1px solid rgba(white, 0.1);
+				padding: 2rem 0 0.5em;
+
+				@include screen-above(lg) {
+					border-top: 0;
+					padding-top: 0.5em;
+				}
+			}
+
+			address {
+				font-style: normal;
+				color: rgba(white, 0.75);
+				font-size: $font-size-s;
+
+				> div {
+
+					@include screen-above(xs) {
+						display: flex;
+						justify-content: center;
+						align-items: flex-start;
+					}
+
+					@include screen-above(lg) {
+						display: block;
+					}
+					.address, .phone {
+						padding: 0.5em 0;
+
+						i {
+							margin-right: 0.5em;
+						}
+
+						span {
+							display: inline-block;
+							margin-right: 0.25em;
+						}
+					}
+
+					.address {
+
+						br + span {
+
+							@include screen-above(lg) {
+								margin-left: 1.25rem;
+							}
+						}
+					}
+
+					.phone {
+						margin-right: 1rem;
+					}
+
+					br {
+
+						@include screen-between(xs, lg) {
+							display: none;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	&__fineprint {
-		background: darken(map-get($control-themes, 'dark'), 10%);
+		background: darken(map-get($control-themes, 'dark'), 5%);
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 		color: white;
 
+		@include screen-above(md) {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+		}
+
 		small {
 			text-align: center;
+			display: block;
 
 			&:first-of-type {
-				@include screen-above(md) {
+				margin: 0.5rem 0;
+
+				@include screen-above(sm) {
 					text-align: left;
+					margin: 0;
 				}
 			}
 
 			&:last-of-type {
-				@include screen-above(md) {
+				margin-bottom: 0.5rem;
+
+				@include screen-above(sm) {
 					text-align: right;
+					margin: 0;
 				}
 			}
 		}

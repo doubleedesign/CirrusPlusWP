@@ -12,7 +12,7 @@ add_action('init', 'doublee_register_menus');
 
 
 /**
- * Add classes to header menu <li> tags
+ * Add classes to menu <li> tags
  * @param $classes
  * @param $item
  * @param $args
@@ -20,38 +20,64 @@ add_action('init', 'doublee_register_menus');
  *
  * @return mixed
  */
-function doublee_header_menu_item_class($classes, $item, $args, $depth) {
-	array_push($classes, 'nav-item');
+function doublee_menu_item_classes($classes, $item, $args, $depth) {
 
-	if($args->theme_location == 'header-menu' && in_array('menu-item-has-children', $classes)) {
-		array_push($classes, 'has-sub');
-		array_push($classes, 'toggle-hover');
+	// Header menu
+	if($args->theme_location == 'header-menu') {
+		array_push($classes, 'nav-item');
+
+		if(in_array('menu-item-has-children', $classes)) {
+			array_push($classes, 'has-sub' );
+			array_push($classes, 'toggle-hover');
+		}
+	}
+
+	// Footer menu
+	if($args->theme_location == 'footer-menu') {
+		if($depth == 0 && $args->depth > 1) {
+			array_push($classes, 'menu-item--top-level col-xs-12 col-sm-6 col-xl-3');
+		}
+		else if($args->depth == 1) {
+			array_push($classes, 'col-xs-12');
+		}
 	}
 
 	return $classes;
 }
-add_filter('nav_menu_css_class', 'doublee_header_menu_item_class', 10, 4);
+add_filter('nav_menu_css_class', 'doublee_menu_item_classes', 10, 4);
 
 
-function doublee_header_menu_link_class($atts, $item, $args, $depth) {
+/**
+ * Add classes to menu <a> tags
+ * @param $atts
+ * @param $item
+ * @param $args
+ * @param $depth
+ *
+ * @return mixed
+ */
+function doublee_menu_link_classes($atts, $item, $args, $depth) {
 
+	// Header menu
 	if($args->theme_location == 'header-menu' && $depth == 0 && in_array('menu-item-has-children', $item->classes)) {
 		$atts['class'] = 'nav-dropdown-link';
 	}
 
 	return $atts;
 }
-add_filter('nav_menu_link_attributes', 'doublee_header_menu_link_class', 10, 4);
+add_filter('nav_menu_link_attributes', 'doublee_menu_link_classes', 10, 4);
 
 
 /**
- * Add classes to sub-menu <ul> in header menu
+ * Add classes to sub-menu <ul>
  * @param $classes
  * @param $args
  *
  * @return mixed
  */
-function doublee_header_menu_submenu_class($classes, $args) {
+function doublee_menu_submenu_classes($classes, $args) {
+
+	// Header menu
 	if($args->theme_location == 'header-menu') {
 		array_push($classes, 'dropdown-menu');
 		array_push($classes, 'dropdown-animated');
@@ -59,4 +85,4 @@ function doublee_header_menu_submenu_class($classes, $args) {
 
 	return $classes;
 }
-add_filter('nav_menu_submenu_css_class', 'doublee_header_menu_submenu_class', 10, 2);
+add_filter('nav_menu_submenu_css_class', 'doublee_menu_submenu_classes', 10, 2);

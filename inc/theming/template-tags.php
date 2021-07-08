@@ -120,3 +120,62 @@ function doublee_integer_to_ordinal_word($num) {
 		return '';
 	}
 }
+
+
+/**
+ * Shortcut function for displaying address from ACF options screen in various formats
+ * @param $format
+ *
+ * @return string
+ */
+function doublee_address($format) {
+	$output = '';
+
+	if(class_exists('ACF')) {
+
+		// Get fields from the theme options
+		$fields = get_field('contact_details', 'option');
+		$street_address = $fields['address'];
+		$suburb = $fields['suburb'];
+		$state = $fields['state'];
+		$postcode = $fields['postcode'];
+		$phone = $fields['phone'];
+
+		// Return in the relevant format for output
+		$output = '';
+		if($format == 'compact') {
+			$output .= '<span>';
+			$output .= $street_address . ' ';
+			$output .= $suburb . ' ';
+			$output .= $state . ' ';
+			$output .= $postcode . ' ';
+			$output .= '</span>';
+			$output .= '<span class="phone">';
+			$output .= $phone;
+			$output .= '</span>';
+		} else if($format == 'expanded') {
+			$output .= '<address itemscope itemtype="http://schema.org/LocalBusiness">';
+			$output .= '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">';
+			if(!empty($phone)) {
+				$output .= '<div class="phone"><i class="fas fa-phone"></i><span itemprop="telephone">'.$phone.'</span></div>';
+			}
+			$output .= '<div class="address">';
+			$output .= '<i class="fas fa-envelope"></i>';
+			if(!empty($street_address)) {
+				$output .= '<span itemprop="streetAddress">'.$street_address.'</span><br/>';
+			}
+			if(!empty($suburb)) {
+				$output .= '<span itemprop="addressLocality">'.$suburb.'</span>';
+			}
+			if(!empty($state)) {
+				$output .= '<span itemprop="addressRegion">'.$state.'</span>';
+			}
+			if(!empty($postcode)) {
+				$output .= '<span itemprop="postalCode">'.$postcode.'</span>';
+			}
+			$output .= '</div></div></address>';
+		}
+	}
+
+	return $output;
+}

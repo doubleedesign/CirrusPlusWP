@@ -1,13 +1,29 @@
 {
     "key": "group_5876ae3e825e9",
-    "title": "Theme Options",
+    "title": "Global options",
     "fields": [
         {
-            "key": "field_5cbd41119b1e7",
-            "label": "404 page",
-            "name": "404",
+            "key": "field_60e6b91c89105",
+            "label": "Contact details",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_60e6b78dff698",
+            "label": "Contact details",
+            "name": "contact_details",
             "type": "group",
-            "instructions": "This will be displayed whenever the user accesses a page that doesn't exist.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -18,10 +34,10 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5876ae4b3746e",
-                    "label": "Message",
-                    "name": "message",
-                    "type": "wysiwyg",
+                    "key": "field_60e6b7a1ff699",
+                    "label": "Phone",
+                    "name": "phone",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -31,10 +47,86 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60e6b7b8ff69a",
+                    "label": "Address",
+                    "name": "address",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60e6b7caff69b",
+                    "label": "Suburb",
+                    "name": "suburb",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60e6b7d1ff69c",
+                    "label": "State",
+                    "name": "state",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60e6b7d8ff69d",
+                    "label": "Postcode",
+                    "name": "postcode",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
@@ -44,17 +136,17 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-theme-options"
+                "value": "acf-options-global-options"
             }
         ]
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1555906864
+    "modified": 1625734879
 }
