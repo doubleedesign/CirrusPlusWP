@@ -12,11 +12,7 @@ window.addEventListener('load', function() {
 
 window.addEventListener('resize', function() {
 	const $ = jQuery.noConflict();
-
-	if(!isMobile()) {
-		$('#header-menu').removeClass('mobile-visible');
-		$('#header-menu .nav-item.has-sub').addClass('toggle-hover')
-	}
+	resetHeaderMenu($);
 });
 
 
@@ -88,4 +84,16 @@ function initMobileMenu($) {
 			$(this).next('.dropdown-menu').slideToggle();
 		})
 	})
+}
+
+/**
+ * Header menu reset - for transition from mobile to larger screen
+ * @param $
+ */
+function resetHeaderMenu($) {
+	if(!isMobile()) {
+		$('#header-menu').removeClass('mobile-visible');
+		$('#header-menu .nav-item.has-sub').addClass('toggle-hover');
+		$('#header-menu .dropdown-menu').removeAttr('style');
+	}
 }
