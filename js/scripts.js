@@ -1,14 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
 	"use strict";
+	const $ = jQuery.noConflict();
 
 	initPolyfills();
-	initAnchorScroll();
+	initAnchorScroll($);
+	initMobileMenu($);
 });
 
 window.addEventListener('load', function() {
 });
 
 window.addEventListener('resize', function() {
+	const $ = jQuery.noConflict();
+
+	if(!isMobile()) {
+		$('#header-menu').removeClass('mobile-visible');
+		$('#header-menu .nav-item.has-sub').addClass('toggle-hover')
+	}
 });
 
 
@@ -49,9 +57,9 @@ function initPolyfills() {
 /**
  * Smooth anchor scrolling
  */
-function initAnchorScroll() {
+function initAnchorScroll($) {
     $('a[href*="#"]:not([data-toggle])').click(function(event) {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name="'+this.hash.slice(1)+'"]');
             if (target.length && !target.parents('.woocommerce-tabs').length) {
@@ -62,4 +70,22 @@ function initAnchorScroll() {
             }
         }
     });
+}
+
+
+/**
+ * Mobile menu
+ */
+function initMobileMenu($) {
+	$(document.body).on('click', '.header .nav-toggle', function() {
+		$('#header-menu').toggleClass('mobile-visible');
+		if($('#header-menu .nav-item').hasClass('toggle-hover')) {
+			$('#header-menu .nav-item').toggleClass('toggle-hover')
+		}
+		$('.nav-dropdown-link').on('click', function(event) {
+			event.preventDefault();
+			$(this).toggleClass('open');
+			$(this).next('.dropdown-menu').slideToggle();
+		})
+	})
 }

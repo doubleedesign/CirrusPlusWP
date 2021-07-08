@@ -30,20 +30,17 @@
 		<header class="site-header header header-animated">
 			<nav class="content row">
 				<div class="header-brand col-4">
-					<div class="nav-item">
-						<a class="title" href="<?php echo get_bloginfo('url'); ?>">Cirrus Plus</a>
-					</div>
-					<div class="nav-item nav-btn" id="header-btn">
-						<span></span>
-						<span></span>
-						<span></span>
-					</div>
+					<a class="header-logo" href="<?php echo get_bloginfo('url'); ?>">Cirrus Plus</a>
+					<button class="nav-toggle">
+						<span>Menu</span>
+						<i class="fas fa-bars"></i>
+					</button>
 				</div>
 				<?php
 				wp_nav_menu(array(
 					'theme_location' 	=> 'header-menu',
 					'menu_id' 			=> 'header-menu',
-					'menu_class' 		=> 'site-header__menu header-nav col-8',
+					'menu_class' 		=> 'header-nav col-8',
 					'container'			=> false,
 					'fallback_cb'		=> false,
 					'depth'				=> 2,

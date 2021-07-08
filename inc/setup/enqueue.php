@@ -8,6 +8,7 @@ function doublee_enqueue_frontend() {
 	wp_enqueue_style('theme-style', get_template_directory_uri().'/style.css', '', time());
 
 	// Third-party scripts
+	wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/369dbbd69d.js', '', '5.15.3', true);
 	if(defined('GMAPS_KEY') && GMAPS_KEY) {
 		wp_enqueue_script('gmaps_api', 'https://maps.googleapis.com/maps/api/js?key='.GMAPS_KEY, '', '', true);
 	}
